@@ -41,8 +41,7 @@
 void read_error(uint8_t led);
 void write_error(uint8_t led);
 
-int 
-blinkm_get_address(uint8_t led)
+int blinkm_get_address(uint8_t led)
 {
 	int fh, result;
 	uint8_t data;
@@ -80,8 +79,7 @@ blinkm_get_address(uint8_t led)
  * power for both the overo and the led to get the bus working again. 
  * It does change the address though.
  */
-int 
-blinkm_set_address(uint8_t new_addr)
+int blinkm_set_address(uint8_t new_addr)
 {
 	int fh, result;
 	uint8_t data[8];
@@ -114,8 +112,7 @@ blinkm_set_address(uint8_t new_addr)
 	return result;
 }
 
-int 
-blinkm_set_rgb_color_now(uint8_t led, uint8_t r, uint8_t g, uint8_t b)
+int blinkm_set_rgb_color_now(uint8_t led, uint8_t r, uint8_t g, uint8_t b)
 {
 	int fh, result;
 	uint8_t data[4];
@@ -142,8 +139,7 @@ blinkm_set_rgb_color_now(uint8_t led, uint8_t r, uint8_t g, uint8_t b)
 	return result;
 }
 
-int 
-blinkm_fade_to_rgb_color(uint8_t led, uint8_t r, uint8_t g, uint8_t b)
+int blinkm_fade_to_rgb_color(uint8_t led, uint8_t r, uint8_t g, uint8_t b)
 {
 	int fh, result;
 	uint8_t data[4];
@@ -170,8 +166,7 @@ blinkm_fade_to_rgb_color(uint8_t led, uint8_t r, uint8_t g, uint8_t b)
 	return result;
 }
 
-int 
-blinkm_fade_to_hsb_color(uint8_t led, uint8_t h, uint8_t s, uint8_t b)
+int blinkm_fade_to_hsb_color(uint8_t led, uint8_t h, uint8_t s, uint8_t b)
 {
 	int fh, result;
 	uint8_t data[4];
@@ -198,8 +193,7 @@ blinkm_fade_to_hsb_color(uint8_t led, uint8_t h, uint8_t s, uint8_t b)
 	return result;
 }
 
-int 
-blinkm_fade_to_random_rgb_color(uint8_t led, uint8_t r, uint8_t g, uint8_t b)
+int blinkm_fade_to_random_rgb_color(uint8_t led, uint8_t r, uint8_t g, uint8_t b)
 {
 	int fh, result;
 	uint8_t data[4];
@@ -226,8 +220,7 @@ blinkm_fade_to_random_rgb_color(uint8_t led, uint8_t r, uint8_t g, uint8_t b)
 	return result;
 }
 
-int 
-blinkm_fade_to_random_hsb_color(uint8_t led, uint8_t h, uint8_t s, uint8_t b)
+int blinkm_fade_to_random_hsb_color(uint8_t led, uint8_t h, uint8_t s, uint8_t b)
 {
 	int fh, result;
 	uint8_t data[4];
@@ -254,8 +247,7 @@ blinkm_fade_to_random_hsb_color(uint8_t led, uint8_t h, uint8_t s, uint8_t b)
 	return result;
 }
 
-int 
-blinkm_get_current_rgb_color(uint8_t led)
+int blinkm_get_current_rgb_color(uint8_t led)
 {
 	int fh, result;
 	uint8_t data[4];
@@ -291,8 +283,7 @@ blinkm_get_current_rgb_color(uint8_t led)
 	return result;
 }
 
-int 
-blinkm_stop_script(uint8_t led)
+int blinkm_stop_script(uint8_t led)
 {
 	int fh, result;
 	uint8_t data;
@@ -316,8 +307,7 @@ blinkm_stop_script(uint8_t led)
 	return result;
 }
 
-int 
-blinkm_play_script(uint8_t led, uint8_t script_id, uint8_t num_repeats)
+int blinkm_play_script(uint8_t led, uint8_t script_id, uint8_t num_repeats)
 {
 	int fh, result;
 	uint8_t data[4];
@@ -345,8 +335,7 @@ blinkm_play_script(uint8_t led, uint8_t script_id, uint8_t num_repeats)
 	return result;
 }
 
-int 
-blinkm_set_fade_speed(uint8_t led, uint8_t speed)
+int blinkm_set_fade_speed(uint8_t led, uint8_t speed)
 {
 	int fh, result;
 	uint8_t data[2];
@@ -371,8 +360,7 @@ blinkm_set_fade_speed(uint8_t led, uint8_t speed)
 	return result;
 }
 
-int 
-blinkm_set_time_adjust(uint8_t led, int8_t adjust)
+int blinkm_set_time_adjust(uint8_t led, int8_t adjust)
 {
 	int fh, result;
 	uint8_t data[2];
@@ -397,8 +385,7 @@ blinkm_set_time_adjust(uint8_t led, int8_t adjust)
 	return result;
 }
 
-int 
-blinkm_read_script_line(uint8_t led, uint8_t line_no, struct script_line *s)
+int blinkm_read_script_line(uint8_t led, uint8_t line_no, struct script_line *s)
 {
 	int fh, result;
 	uint8_t data[8];
@@ -447,8 +434,7 @@ blinkm_read_script_line(uint8_t led, uint8_t line_no, struct script_line *s)
 	return result;
 }
 
-int 
-blinkm_write_script_line(uint8_t led, uint8_t line_no, struct script_line *s)
+int blinkm_write_script_line(uint8_t led, uint8_t line_no, struct script_line *s)
 {
 	int fh, result;
 	uint8_t data[8];
@@ -514,8 +500,7 @@ blinkm_write_script_line(uint8_t led, uint8_t line_no, struct script_line *s)
 	return result;
 }
 
-int 
-blinkm_set_script_length_and_repeats(uint8_t led, uint8_t length, uint8_t repeats)
+int blinkm_set_script_length_and_repeats(uint8_t led, uint8_t length, uint8_t repeats)
 {
 	int fh, result;
 	uint8_t data[4];
@@ -550,8 +535,7 @@ blinkm_set_script_length_and_repeats(uint8_t led, uint8_t length, uint8_t repeat
  * We use this to scan a bus for blinkm devices. The verbose flag will suppress
  * error messages if false.
  */
-int 
-blinkm_get_firmware_version(uint8_t led, int verbose)
+int blinkm_get_firmware_version(uint8_t led, int verbose)
 {
 	int fh, result;
 	uint8_t data[2];
@@ -593,14 +577,12 @@ blinkm_get_firmware_version(uint8_t led, int verbose)
 	return result;
 }
 
-void 
-read_error(uint8_t led)
+void read_error(uint8_t led)
 {
 	fprintf(stderr, "Read failed for device 0x%02X: %s\n", led, strerror(errno));
 }
 
-void 
-write_error(uint8_t led)
+void write_error(uint8_t led)
 {
 	fprintf(stderr, "Write failed for device 0x%02X: %s\n", led, strerror(errno));
 }
