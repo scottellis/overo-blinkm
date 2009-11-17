@@ -1,0 +1,49 @@
+# Makefile for the blinkm overo target cross-build
+#
+
+OETMP = /work/overo-oe/tmp
+
+TOOLDIR = ${OETMP}/cross/armv7a/bin
+
+STAGEDIR = ${OETMP}/staging/armv7a-angstrom-linux-gnueabi/usr
+
+CC = ${TOOLDIR}/arm-angstrom-linux-gnueabi-gcc
+
+CFLAGS = -Wall -Wextra -Werror
+		   
+LIBDIR = ${STAGEDIR}/lib
+
+INCDIR = ${STAGEDIR}/include
+		   			      
+LIBS = -L ${LIBDIR}
+
+TARGET = blinkm
+
+DEFINES = OVERO_CROSS_BUILD
+
+OBJS = main.o \
+       utility.o \
+       i2c_functions.o \
+       i2c_blinkm.o 
+
+${TARGET} : $(OBJS)
+	${CC} ${CFLAGS} ${OBJS} ${LIBS} -o ${TARGET}
+
+
+main.o: main.c 
+	${CC} ${CFLAGS} -D ${DEFINES} -I ${INCDIR} -c main.c  
+
+utility.o: utility.c 
+	${CC} ${CFLAGS} -D ${DEFINES} -I ${INCDIR} -c utility.c 
+
+i2c_functions.o: i2c_functions.c 
+	${CC} ${CFLAGS} -D ${DEFINES} -I ${INCDIR} -c i2c_functions.c 
+
+i2c_blinkm.o: i2c_blinkm.c blinkm_regs.h 
+	${CC} ${CFLAGS} -D ${DEFINES} -I ${INCDIR} -c i2c_blinkm.c
+
+
+clean:
+	rm -f ${TARGET} ${OBJS} *~
+
+

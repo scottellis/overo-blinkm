@@ -1,0 +1,28 @@
+This project produces a command line program for controlling
+BlinkM leds connected to the I2C bus 3 from a Gumstix Overo 
+expansion board.
+
+There are make files for building the project natively on
+the gumstix or as a cross-build on another machine configured
+to build software with OpenEmbedded.
+
+The cross-build makefile assumes the cross-tools have been 
+setup in gumstix OE standard locations with the exception of 
+the top directory.
+
+I use a non-standard OE temp directory "/work/overo-oe/tmp".
+
+You want to set this to your ${HOME}/overo-oe/tmp unless your 
+tools are also in a non-standard location.
+
+TODO
+
+1. Write script hasn't been tested much.
+
+2. Need to recover the bus after the command to change an led address.
+   Right now you need to power cycle the led which is okay, but you
+   also need to power cycle the overo or the bus stays hung.
+   
+3. GetAddress is not implemented. Investigate if I2C broadcasts are
+   possible with the overos. 
+

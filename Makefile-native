@@ -1,0 +1,34 @@
+# Makefile for the blinkm overo target cross-build
+#
+
+CC = gcc
+
+CFLAGS = -g -Wall -Wextra -Werror
+		   
+TARGET = blinkm
+
+DEFINES = OVERO_NATIVE_BUILD
+
+OBJS = main.o utility.o i2c_functions.o i2c_blinkm.o 
+
+${TARGET} : $(OBJS)
+	${CC} ${CFLAGS} ${OBJS} -o ${TARGET}
+
+
+main.o: main.c 
+	${CC} ${CFLAGS} -D ${DEFINES} -c main.c 
+
+utility.o: utility.c 
+	${CC} ${CFLAGS} -D ${DEFINES} -c utility.c
+
+i2c_functions.o: i2c_functions.c 
+	${CC} ${CFLAGS} -D ${DEFINES} -c i2c_functions.c 
+
+i2c_blinkm.o: i2c_blinkm.c blinkm_regs.h 
+	${CC} ${CFLAGS} -D ${DEFINES} -c i2c_blinkm.c
+
+
+clean:
+	rm -f ${TARGET} ${OBJS} *~
+
+
