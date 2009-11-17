@@ -1,4 +1,4 @@
-# Makefile for the blinkm overo target cross-build
+# Makefile for compiling on the overo 
 #
 
 CC = gcc

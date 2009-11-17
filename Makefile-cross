@@ -1,4 +1,4 @@
-# Makefile for the blinkm overo target cross-build
+# Makefile for building with cross tools on another machine 
 #
 
 OETMP = /work/overo-oe/tmp
