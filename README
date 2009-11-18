@@ -7,12 +7,21 @@ to build software with OpenEmbedded.
 
 The cross-build makefile assumes the cross-tools have been 
 setup in gumstix OE standard locations with the exception of 
-the top directory.
+the TMP directory specified in build/conf/site.conf
 
 I use a non-standard OE temp directory "/work/overo-oe/tmp".
 
-You probably want to set this to your ${HOME}/overo-oe/tmp 
-unless your tools are also in a non-standard location.
+You will want to change OETMP in Makefile-cross to point to  
+${HOME}/overo-oe/tmp unless you also have a modified setup
+in which case you'll know where to point it.
+
+
+You will need to change permissions for /dev/i2c-3 if you
+are running the program as someone other then root.
+
+As root on the overo run the following
+
+chmod 0666 /dev/i2c-3
 
 
 TODO
