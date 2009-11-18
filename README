@@ -24,6 +24,49 @@ As root on the overo run the following
 chmod 0666 /dev/i2c-3
 
 
+Run the program without arguments to get the available commands.
+
+$ ./blinkm
+
+Usage: blinkm <command> <args>
+
+The led address is optional and defaults to 0x09.
+Use a comma separated list to address multiple devices in one command.
+The color arguments are optional and default to zero.
+
+Available Commands
+	find-leds 
+	set-rgb [-d led] [-r red] [-g green] [-b blue]
+	get-rgb [-d led]
+	fade-rgb [-d led] [-r red] [-g green] [-b blue]
+	fade-hsb [-d led] [-h hue] [-s saturation] [-b brightness]
+	fade-random-rgb [-d led] [-r red] [-g green] [-b blue]
+	fade-random-hsb [-d led] [-h hue] [-s saturation] [-b brightness]
+	play-script [-d led] -s <script id or name> -n num_repeats
+	stop-script [-d led]
+	set-fade-speed [-d led] -f speed
+	set-time-adjust [-d led] -t adjust
+	show-scripts 
+	read-script [-d led]
+	write-script-line [-d led] -n line_no -t ticks -c cmd -a arg1[,arg2[,arg3]]
+	set-script-length-and-repeats [-d led] -l length -n repeats
+	set-address -d new_led_address
+
+
+The first command you probably want to run is find-leds.
+
+$ ./blinkm find-leds
+
+Scanning I2C bus for BlinkM devices...
+Found a BlinkM at address 1 (0x01)
+Found a BlinkM at address 2 (0x02)
+Found a BlinkM at address 3 (0x03)
+Found a BlinkM at address 4 (0x04)
+Found 4 devices
+
+
+
+
 TODO
 
 1. Write script function hasn't been tested much.
@@ -35,3 +78,4 @@ TODO
 3. GetAddress is not implemented. Investigate if i2c broadcasts are
    possible with the overos. 
 
+4. Add code to read in scripts from a file.
