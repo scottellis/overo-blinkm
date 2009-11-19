@@ -87,15 +87,11 @@ int i2c_open_device()
 {
 	int fh = -1;
 
-	if (strlen(_i2c_bus) > 0) {
-		fh = open(_i2c_bus, O_RDWR);
+	fh = open(_i2c_bus, O_RDWR);
 
-		if (fh < 0) {
-			fprintf(stderr, "Error: Could not open file %s: %s\n", 
-					_i2c_bus, strerror(errno));
-		}
-	} else {
-		fprintf(stderr, "Error: i2c_bus name not initialized\n");
+	if (fh < 0) {
+		fprintf(stderr, "Error: Could not open file %s: %s\n", 
+				_i2c_bus, strerror(errno));
 	}
 
 	return fh;
@@ -118,51 +114,6 @@ int i2c_set_slave_address(int fh, uint8_t address)
 	}
 
 	return 1;
-}
-
-int i2c_read_byte(int fh)
-{
-	unsigned char data;
-	int result;
-
-	data = 0;
-
-	result = read(fh, &data, 1);
-
-	if (result == 1) {
-		return (int) data;
-	} else if (result == 0) {
-		fprintf(stderr, "Error: i2c_read_byte() read zero bytes!\n");
-		result = -1;
-	} else {
-		fprintf(stderr, "Error: i2c_read_byte(): %s\n", strerror(errno));
-	}
-
-	return result;
-}
-
-int i2c_read_word(int fh)
-{
-	unsigned char data[2];
-	int result;
-
-	data[0] = 0;
-	data[1] = 0;
-
-	result = read(fh, data, 2);
-
-	if (result == 2) {
-		return (int)data[1] + (int)(data[0] << 8);
-	} else if (result >= 0) {
-		fprintf(stderr, "Error: i2c_read_word() read only %d byte(s)!\n",
-				result);
-		
-		result = -1;
-	} else {
-		fprintf(stderr, "Error: i2c_read_word(): %s\n", strerror(errno));
-	}
-
-	return result;
 }
 
 int i2c_get_bus_functions()
