@@ -37,9 +37,6 @@ int i2c_get_bus_functions(int verbose);
 int i2c_start_transaction(uint8_t slave_address);
 int i2c_end_transaction();
 
-int i2c_read_byte(int fh);
-int i2c_read_word(int fh);
-
 #ifdef __cplusplus
 }
 #endif
