@@ -1,28 +1,40 @@
+OVERVIEW
+
 A command line program for controlling BlinkM leds connected 
 to the I2C bus 3 of a Gumstix Overo expansion board.
+
+
+BUILDING
 
 There are make files for building the project natively on
 the gumstix or as a cross-build on another machine configured
 to build software with OpenEmbedded.
 
 The cross-build makefile assumes the cross-tools have been 
-setup in gumstix OE standard locations with the exception of 
-the TMP directory specified in build/conf/site.conf
+setup in gumstix OE standard locations.
 
-I use a non-standard OE temp directory "/work/overo-oe/tmp".
+From the project directory run 
 
-You will want to change OETMP in Makefile-cross to point to  
-${HOME}/overo-oe/tmp unless you also have a modified setup
-in which case you'll know where to point it.
+make -f Makefile-cross
 
+or 
+
+make -f Makefile-native
+
+depending on whether you are building on a development machine
+or the Gumstix respectivelly.
+
+
+RUNNING
 
 You will need to change permissions for /dev/i2c-3 if you
 are running the program as someone other then root.
 
-As root on the overo run the following
+A one-time fix is to run the following as root
 
 chmod 0666 /dev/i2c-3
 
+udev will overwrite this on your next boot though.
 
 Run the program without arguments to get the available commands.
 
