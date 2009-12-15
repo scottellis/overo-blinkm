@@ -37,8 +37,11 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-#include <linux/i2c.h>
-#include <linux/i2c-dev.h>
+#ifndef CROSS_BUILD
+#include <linux/i2c.h> 
+#endif
+
+#include <linux/i2c-dev.h> 
 
 
 static char _i2c_bus[] = "/dev/i2c-3";

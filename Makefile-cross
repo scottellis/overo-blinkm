@@ -38,7 +38,7 @@ utility.o: utility.c
 	${CC} ${CFLAGS} -I ${INCDIR} -c utility.c 
 
 i2c_functions.o: i2c_functions.c 
-	${CC} ${CFLAGS} -I ${INCDIR} -c i2c_functions.c 
+	${CC} ${CFLAGS} -D CROSS_BUILD -I ${INCDIR} -c i2c_functions.c 
 
 i2c_blinkm.o: i2c_blinkm.c blinkm_regs.h 
 	${CC} ${CFLAGS} -I ${INCDIR} -c i2c_blinkm.c
