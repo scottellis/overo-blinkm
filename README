@@ -1,7 +1,26 @@
 OVERVIEW
 
 A command line program for controlling BlinkM leds connected 
-to the I2C bus 3 of a Gumstix Overo expansion board.
+to the I2C-3 bus of a Gumstix Overo expansion board.
+
+If you are only interested in userland i2c programming from an 
+Overo, ignore main.c since that is only about hacking a cli for 
+the BlinkMs, unrelated to anything you probably care about.
+The i2c_functions and i2c_blinkm files are more what you want
+to see.
+
+I open and close the /dev/i2c-3 file on every invocation since
+this is a cli program. You don't necessarily need or want to do
+this if you are writing a daemon. Likewise with the I2C_SLAVE
+ioctl calls if you only have one device you are talking to.
+
+The schematic has the Sparkfun part numbers available when I built
+this. They may have changed. It does show how to wire up the level 
+converter which can be a little confusing for us software guys.
+
+The cross makefile can be used as template for other projects that 
+want to cross-compile using the OE built tools but without using 
+bitbake.  
 
 
 BUILDING

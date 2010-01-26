@@ -1,8 +1,9 @@
 # Makefile for building with cross tools on another machine 
 #
 
-#OETMP = /work/overo-oe/tmp
-
+# my OETMP
+#OETMP = /gum2/tmp
+# standard OETMP
 OETMP = ${OVEROTOP}/tmp
 
 TOOLDIR = ${OETMP}/cross/armv7a/bin
