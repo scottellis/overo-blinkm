@@ -33,7 +33,7 @@
 extern "C" {
 #endif
 
-int i2c_get_bus_functions(int verbose);
+int i2c_get_bus_functions();
 int i2c_start_transaction(uint8_t slave_address);
 int i2c_end_transaction();
 

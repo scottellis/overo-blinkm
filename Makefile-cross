@@ -1,8 +1,8 @@
 # Makefile for building with cross tools on another machine 
 #
 
-# my OETMP
-#OETMP = /gum2/tmp
+# Point OETMP wherever ${OVEROTOP}/build/conf/site.conf:TMPDIR points, usually ${OVEROTOP}/tmp
+# OETMP = /gum2/tmp
 # standard OETMP
 OETMP = ${OVEROTOP}/tmp
 
