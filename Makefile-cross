@@ -2,9 +2,9 @@
 #
 
 # Point OETMP wherever ${OVEROTOP}/build/conf/site.conf:TMPDIR points, usually ${OVEROTOP}/tmp
-# OETMP = /gum2/tmp
+OETMP = /gum2/tmp
 # standard OETMP
-OETMP = ${OVEROTOP}/tmp
+# OETMP = ${OVEROTOP}/tmp
 
 TOOLDIR = ${OETMP}/cross/armv7a/bin
 
@@ -39,7 +39,7 @@ utility.o: utility.c
 	${CC} ${CFLAGS} -I ${INCDIR} -c utility.c 
 
 i2c_functions.o: i2c_functions.c 
-	${CC} ${CFLAGS} -D CROSS_BUILD -I ${INCDIR} -c i2c_functions.c 
+	${CC} ${CFLAGS} -I ${INCDIR} -c i2c_functions.c 
 
 i2c_blinkm.o: i2c_blinkm.c blinkm_regs.h 
 	${CC} ${CFLAGS} -I ${INCDIR} -c i2c_blinkm.c

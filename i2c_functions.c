@@ -37,10 +37,6 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-#ifndef CROSS_BUILD
-#include <linux/i2c.h> 
-#endif
-
 #include <linux/i2c-dev.h> 
 
 
@@ -117,80 +113,5 @@ int i2c_set_slave_address(int fh, uint8_t address)
 	}
 
 	return 1;
-}
-
-int i2c_get_bus_functions()
-{
-	int fh, result;
-	char yes[] = "YES";
-	char no[] = "NO";
-
-	fh = i2c_open_device();
-
-	if (!fh) 
-		return -1;
-	
-
-	if (ioctl(fh, I2C_FUNCS, &result) < 0) {
-		fprintf(stderr, "Error: Failed to get I2C bus functions: %s",
-				strerror(errno));
-
-		result = -1;
-	} else {
-		fprintf(stderr, "I2C_FUNC_I2C : %s\n", 
-				(result & I2C_FUNC_I2C) ? yes : no);
-
-		fprintf(stderr, "I2C_FUNC_10BIT_ADDR : %s\n", 
-				(result & I2C_FUNC_10BIT_ADDR) ? yes : no);
-
-		fprintf(stderr, "I2C_FUNC_PROTOCOL_MANGLING : %s\n",
-				(result & I2C_FUNC_PROTOCOL_MANGLING) ? yes : no);
-
-		fprintf(stderr, "I2C_FUNC_SMBUS_PEC : %s\n", 
-				(result & I2C_FUNC_SMBUS_PEC) ? yes : no);
-
-		fprintf(stderr, "I2C_FUNC_SMBUS_BLOCK_PROC_CALL : %s\n",
-				(result & I2C_FUNC_SMBUS_BLOCK_PROC_CALL) ? yes : no);
-
-		fprintf(stderr, "I2C_FUNC_SMBUS_QUICK : %s\n",
-				(result & I2C_FUNC_SMBUS_QUICK) ? yes : no);
-
-		fprintf(stderr, "I2C_FUNC_SMBUS_READ_BYTE : %s\n",
-				(result & I2C_FUNC_SMBUS_READ_BYTE) ? yes : no);
-
-		fprintf(stderr, "I2C_FUNC_SMBUS_WRITE_BYTE : %s\n",
-				(result & I2C_FUNC_SMBUS_WRITE_BYTE) ? yes : no); 
-
-		fprintf(stderr, "I2C_FUNC_SMBUS_READ_BYTE_DATA : %s\n",
-				(result & I2C_FUNC_SMBUS_READ_BYTE_DATA) ? yes : no); 
-
-		fprintf(stderr, "I2C_FUNC_SMBUS_WRITE_BYTE_DATA : %s\n",
-				(result & I2C_FUNC_SMBUS_WRITE_BYTE_DATA) ? yes : no); 
-
-		fprintf(stderr, "I2C_FUNC_SMBUS_READ_WORD_DATA : %s\n",
-				(result & I2C_FUNC_SMBUS_READ_WORD_DATA) ? yes : no); 
-
-		fprintf(stderr, "I2C_FUNC_SMBUS_WRITE_WORD_DATA : %s\n",
-				(result & I2C_FUNC_SMBUS_WRITE_WORD_DATA) ? yes : no); 
-		
-		fprintf(stderr, "I2C_FUNC_SMBUS_PROC_CALL : %s\n",
-				(result & I2C_FUNC_SMBUS_PROC_CALL) ? yes : no); 
-
-		fprintf(stderr, "I2C_FUNC_SMBUS_READ_BLOCK_DATA : %s\n",
-				(result & I2C_FUNC_SMBUS_READ_BLOCK_DATA) ? yes : no); 
-
-		fprintf(stderr, "I2C_FUNC_SMBUS_WRITE_BLOCK_DATA : %s\n",
-				(result & I2C_FUNC_SMBUS_WRITE_BLOCK_DATA) ? yes : no); 
-
-		fprintf(stderr, "I2C_FUNC_SMBUS_READ_I2C_BLOCK : %s\n",
-				(result & I2C_FUNC_SMBUS_READ_I2C_BLOCK) ? yes : no); 
-
-		fprintf(stderr, "I2C_FUNC_SMBUS_WRITE_I2C_BLOCK : %s\n",
-				(result & I2C_FUNC_SMBUS_WRITE_I2C_BLOCK) ? yes : no); 
-	}
-
-	close(fh);
-
-	return result;
 }
 
