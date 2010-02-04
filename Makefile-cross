@@ -2,9 +2,9 @@
 #
 
 # Point OETMP wherever ${OVEROTOP}/build/conf/site.conf:TMPDIR points, usually ${OVEROTOP}/tmp
-OETMP = /gum2/tmp
+# OETMP = /gum2/tmp
 # standard OETMP
-# OETMP = ${OVEROTOP}/tmp
+OETMP = ${OVEROTOP}/tmp
 
 TOOLDIR = ${OETMP}/cross/armv7a/bin
 
