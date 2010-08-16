@@ -2,13 +2,17 @@
 #
 
 # Point OETMP wherever ${OVEROTOP}/build/conf/site.conf:TMPDIR points, usually ${OVEROTOP}/tmp
-# OETMP = /gum2/tmp
+OETMP = /gum
 # standard OETMP
-OETMP = ${OVEROTOP}/tmp
+# OETMP = ${OVEROTOP}/tmp
 
-TOOLDIR = ${OETMP}/cross/armv7a/bin
+# OE prior to around 30July2010
+# TOOLDIR = ${OETMP}/cross/armv7a/bin
+# STAGEDIR = ${OETMP}/staging/armv7a-angstrom-linux-gnueabi/usr
 
-STAGEDIR = ${OETMP}/staging/armv7a-angstrom-linux-gnueabi/usr
+# OE after 30July2010
+TOOLDIR = ${OETMP}/sysroots/`uname -m`-linux/usr/armv7a/bin
+STAGEDIR = ${OETMP}/sysroots/armv7a-angstrom-linux-gnueabi/usr
 
 CC = ${TOOLDIR}/arm-angstrom-linux-gnueabi-gcc
 
