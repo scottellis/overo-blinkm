@@ -14,23 +14,12 @@ i2c_functions.c to use the appropriate i2c bus for your board.
   Building
 --------
 
-There are make files for building the project natively on
-the gumstix or as a cross-build on another machine configured
-to build software with OpenEmbedded.
+There is a make file for building the project.
 
-The cross-build makefile assumes the cross-tools have been 
-setup in gumstix OE standard locations.
-
-From the project directory run 
-
-make -f Makefile-cross
-
-or 
-
-make -f Makefile-native
-
-depending on whether you are building on a development machine
-or the Gumstix respectivelly.
+        $ git pull git://github.com/scottellis/overo-blinkm.git
+        $ cd overo-blinkm
+        $ <optional> edit i2c_functions.c
+        $ make
 
 
   Running
