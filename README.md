@@ -25,10 +25,19 @@ There is a make file for building the project.
   Running
 --------
 
-You will need to change permissions for /dev/i2c-3 if you
-are running the program as someone other then root.
+RPi kernels might not load the i2c drivers automatically. If you are
+running the Debian Wheezy image, you can add the following two lines
+to /etc/modules
 
-A one-time fix is to run the following as root
+        i2c_dev
+        i2c_bcm2708
+
+Gumstix kernels load the i2c drivers by default.
+
+You will need to change permissions for /dev/i2c-N device if you are
+running blinkm as someone other then root.
+
+A one-time fix is to run the following as root (Gumstix example)
 
         chmod 0666 /dev/i2c-3
 
