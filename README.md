@@ -41,7 +41,7 @@ A one-time fix is to run the following as root (Gumstix example)
 
         chmod 0666 /dev/i2c-3
 
-udev will overwrite this on your next boot though.
+This will get overwritten on your next boot though.
 
 A more permanent fix is to create a udev rule file like this 
 
@@ -49,7 +49,7 @@ A more permanent fix is to create a udev rule file like this
 
 With the following single line
 
-        KERNEL=="i2c-[0-3]", GROUP="i2c", MODE="0666"
+        KERNEL=="i2c-[0-3]", MODE="0666"
 
 
 Run the blinkm program without arguments to get the available commands.
