@@ -40,13 +40,13 @@
 #include <linux/i2c-dev.h> 
 
 /* Gumstix Overo */
-static char _i2c_bus[] = "/dev/i2c-3";
+static char i2c_bus[] = "/dev/i2c-3";
 
 /* RPi version 1 */
-/* static char _i2c_bus[] = "/dev/i2c-0";
+/* static char i2c_bus[] = "/dev/i2c-0"; */
 
 /* RPi version 2 */
-/* static char _i2c_bus[] = "/dev/i2c-1";
+/* static char i2c_bus[] = "/dev/i2c-1"; */
 
 
 /* some local functions */
@@ -92,11 +92,11 @@ int i2c_open_device()
 {
 	int fh = -1;
 
-	fh = open(_i2c_bus, O_RDWR);
+	fh = open(i2c_bus, O_RDWR);
 
 	if (fh < 0) {
 		fprintf(stderr, "Error: Could not open file %s: %s\n", 
-				_i2c_bus, strerror(errno));
+				i2c_bus, strerror(errno));
 	}
 
 	return fh;
